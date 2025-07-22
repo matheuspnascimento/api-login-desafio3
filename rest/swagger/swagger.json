@@ -1,0 +1,63 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Login - Desafio",
+    "version": "1.0.0",
+    "description": "API para simulação de login, bloqueio e reset de senha."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Realiza login do usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "usuario": { "type": "string" },
+                  "senha": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Token gerado com sucesso" },
+          "401": { "description": "Credenciais inválidas ou senha bloqueada" },
+          "500": { "description": "Erro interno do servidor" }
+        }
+      }
+    },
+    "/resetar-senha": {
+      "post": {
+        "summary": "Reseta a senha do usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "usuario": { "type": "string" },
+                  "novaSenha": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Senha resetada com sucesso" },
+          "401": { "description": "Credenciais inválidas" },
+          "500": { "description": "Erro interno do servidor" }
+        }
+      }
+    }
+  }
+} 
