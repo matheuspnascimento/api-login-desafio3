@@ -1,0 +1,15 @@
+{
+  "name": "api-desafio-3",
+  "version": "1.0.0",
+  "description": "API de login para desafio de teste de software.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "swagger-ui-express": "^4.6.3",
+    "swagger-jsdoc": "^6.2.8"
+  }
+} 
