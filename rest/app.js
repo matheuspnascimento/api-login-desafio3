@@ -32,6 +32,10 @@ app.use('/', loginRoutes);
 app.use(errorHandler);
 
 const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`API rodando na porta ${PORT}`);
-}); 
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`API rodando na porta ${PORT}`);
+  });
+}
+
+module.exports = app; 
