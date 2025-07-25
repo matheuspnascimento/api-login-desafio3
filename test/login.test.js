@@ -74,6 +74,7 @@ describe('POST /resetar-senha', () => {
     expect(user.senha).to.equal('novaSenha123');
     expect(user.tentativas).to.equal(0);
     expect(user.bloqueado).to.be.false;
+    
   });
 
   it('Deve retornar 401 e a mensagem "Credenciais inválidas" quando eu tentar resetar a senha de um usuário inexistente', async function () {
