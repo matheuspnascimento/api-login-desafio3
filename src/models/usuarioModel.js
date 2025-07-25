@@ -1,5 +1,5 @@
 // Usuários mockados em memória
-const usuarios = [
+const initialUsuarios = [
   { 
     usuario: 'Matheus', 
     senha: '123456', 
@@ -18,4 +18,14 @@ const usuarios = [
     bloqueado: false }
 ];
 
-module.exports = usuarios; 
+const usuarios = [];
+
+function resetUsuarios() {
+  usuarios.length = 0;
+  initialUsuarios.forEach((u) => usuarios.push({ ...u }));
+}
+
+// Inicializa o array na primeira carga
+resetUsuarios();
+
+module.exports = { usuarios, resetUsuarios }; 

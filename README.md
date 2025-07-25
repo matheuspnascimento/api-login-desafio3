@@ -10,7 +10,7 @@ API REST simples em Node.js/Express para simular operações de login, controle 
    ```
 2. Inicie a API:
    ```
-   npm start
+   node rest/app.js
    ```
 
 A API estará disponível em: http://localhost:3000
