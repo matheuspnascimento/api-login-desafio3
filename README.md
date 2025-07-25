@@ -61,20 +61,25 @@ api-login-desafio3/
 
 ## Como Executar o Projeto
 
-1. **Instale as dependências:**
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/matheuspnascimento/api-login-desafio3.git
+   cd api-login-desafio3
+   ```
+2. **Instale as dependências:**
    ```bash
    npm install
    ```
-2. **Inicie a API:**
+3. **Inicie a API:**
    ```bash
    node rest/server.js
    ```
    A API estará disponível em: [http://localhost:3000](http://localhost:3000)
 
-3. **Acesse a documentação Swagger:**
+4. **Acesse a documentação Swagger:**
    - [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
-4. **Execute os testes automatizados:**
+5. **Execute os testes automatizados:**
    ```bash
    npm test
    ```
@@ -99,35 +104,131 @@ api-login-desafio3/
 ### 1. **POST /login**
 Realiza o login do usuário e retorna um token JWT.
 
-**Body:**
+#### Exemplo de requisição bem-sucedida
+Body:
 ```json
 {
   "usuario": "Matheus",
   "senha": "123456"
 }
 ```
-**Respostas:**
-- `200 OK`: Login realizado com sucesso, retorna token JWT.
-- `401 Unauthorized`: Credenciais inválidas ou senha bloqueada.
-- `500 Internal Server Error`: Erro interno do servidor.
+Resposta esperada:
+```json
+{
+  "message": "Login realizado com sucesso!",
+  "token": "<jwt_token>"
+}
+```
+
+#### Exemplo de senha incorreta (1ª tentativa)
+Body:
+```json
+{
+  "usuario": "Matheus",
+  "senha": "senhaErrada"
+}
+```
+Resposta esperada:
+```json
+{
+  "message": "Senha incorreta. A senha será bloqueada após mais 2 tentativas"
+}
+```
+
+#### Exemplo de senha incorreta (2ª tentativa)
+Body:
+```json
+{
+  "usuario": "Matheus",
+  "senha": "senhaErrada"
+}
+```
+Resposta esperada:
+```json
+{
+  "message": "Senha incorreta. A senha será bloqueada na próxima tentativa"
+}
+```
+
+#### Exemplo de senha incorreta (3ª tentativa - bloqueio)
+Body:
+```json
+{
+  "usuario": "Matheus",
+  "senha": "senhaErrada"
+}
+```
+Resposta esperada:
+```json
+{
+  "message": "Senha bloqueada após exceder o limite de 3 tentativas."
+}
+```
+
+#### Exemplo de usuário bloqueado tentando logar
+Body:
+```json
+{
+  "usuario": "Matheus",
+  "senha": "123456"
+}
+```
+Resposta esperada:
+```json
+{
+  "message": "Senha bloqueada após exceder o limite de 3 tentativas."
+}
+```
+
+#### Exemplo de usuário inexistente
+Body:
+```json
+{
+  "usuario": "NaoExiste",
+  "senha": "qualquer"
+}
+```
+Resposta esperada:
+```json
+{
+  "message": "Credenciais inválidas"
+}
+```
+
+---
 
 ### 2. **POST /resetar-senha**
 Permite redefinir a senha de um usuário.
 
-**Body:**
+#### Exemplo de reset bem-sucedido
+Body:
 ```json
 {
   "usuario": "Matheus",
   "novaSenha": "novasenha"
 }
 ```
-**Respostas:**
-- `200 OK`: Senha resetada com sucesso.
-- `401 Unauthorized`: Credenciais inválidas.
-- `500 Internal Server Error`: Erro interno do servidor.
+Resposta esperada:
+```json
+{
+  "message": "Senha resetada com sucesso"
+}
+```
 
-### 3. **GET /api-docs**
-Acessa a documentação interativa da API via Swagger.
+#### Exemplo de usuário inexistente
+Body:
+```json
+{
+  "usuario": "NaoExiste",
+  "novaSenha": "qualquer"
+}
+```
+Resposta esperada:
+```json
+{
+  "message": "Credenciais inválidas"
+}
+```
 
 ---
 
@@ -150,23 +251,6 @@ Acessa a documentação interativa da API via Swagger.
 - **Dados:**
   - Todos os dados são mockados em memória (não persistem após reiniciar a API).
   - Não há integração com banco de dados.
-
----
-
-## Comandos Úteis
-
-- **Iniciar API:**
-  ```bash
-  node rest/server.js
-  ```
-- **Executar testes:**
-  ```bash
-  npm test
-  ```
-- **Acessar relatório de testes:**
-  Abra o arquivo `mochawesome-report/mochawesome.html` no navegador após rodar os testes.
-- **Acessar documentação Swagger:**
-  [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
 ---
 
