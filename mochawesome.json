@@ -5,9 +5,9 @@
     "passes": 5,
     "pending": 0,
     "failures": 0,
-    "start": "2025-07-25T21:21:21.815Z",
-    "end": "2025-07-25T21:21:21.866Z",
-    "duration": 51,
+    "start": "2025-07-25T21:46:38.196Z",
+    "end": "2025-07-25T21:46:38.244Z",
+    "duration": 48,
     "testsRegistered": 5,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "feae3939-d533-4e6c-a41a-d842979e07ac",
+      "uuid": "3915f78e-432c-49b3-9cd6-a1e65735ca4b",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -36,8 +36,8 @@
           "context": null,
           "code": "resetUsuarios();",
           "err": {},
-          "uuid": "425d1e71-17c2-4f23-9d1e-9775af56f3af",
-          "parentUUID": "feae3939-d533-4e6c-a41a-d842979e07ac",
+          "uuid": "126e71ba-6a5c-48cb-9ab8-00bb5fbda8c9",
+          "parentUUID": "3915f78e-432c-49b3-9cd6-a1e65735ca4b",
           "isHook": true,
           "skipped": false
         },
@@ -54,8 +54,8 @@
           "context": null,
           "code": "resetUsuarios();",
           "err": {},
-          "uuid": "9e43cdc9-27d8-4000-b002-8af73ef96205",
-          "parentUUID": "feae3939-d533-4e6c-a41a-d842979e07ac",
+          "uuid": "3ea344a8-0004-421a-bcf0-7f5972e068c6",
+          "parentUUID": "3915f78e-432c-49b3-9cd6-a1e65735ca4b",
           "isHook": true,
           "skipped": false
         }
@@ -64,7 +64,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "037a9bdb-8b72-4ed2-b110-f21b627f9191",
+          "uuid": "f60cfc9a-e863-45e0-bfe8-2d3a1f930b2f",
           "title": "Login",
           "fullFile": "/home/runner/work/api-login-desafio3/api-login-desafio3/test/login.test.js",
           "file": "/test/login.test.js",
@@ -73,7 +73,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "33cc67ec-a8c4-45a0-9324-c486ee705f43",
+              "uuid": "ebf0e88a-789e-421d-874c-6dfb61a2b026",
               "title": "POST /login",
               "fullFile": "/home/runner/work/api-login-desafio3/api-login-desafio3/test/login.test.js",
               "file": "/test/login.test.js",
@@ -84,7 +84,7 @@
                   "title": "Deve retornar 200 com um token em string e a mensagem \"Login realizado com sucesso\" quando eu fizer login com um usuário válido",
                   "fullTitle": "Login POST /login Deve retornar 200 com um token em string e a mensagem \"Login realizado com sucesso\" quando eu fizer login com um usuário válido",
                   "timedOut": false,
-                  "duration": 24,
+                  "duration": 25,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -93,8 +93,8 @@
                   "context": null,
                   "code": "const response = await request(app)\n    .post('/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'usuario': 'Matheus',\n        'senha': '123456'\n    })\n    expect(response.status).to.equal(200)\n    expect(response.body.message).to.equal('Login realizado com sucesso!')\n    expect(response.body.token).to.be.a('string')",
                   "err": {},
-                  "uuid": "ca488974-e691-4ed1-bb50-45fca578d5f5",
-                  "parentUUID": "33cc67ec-a8c4-45a0-9324-c486ee705f43",
+                  "uuid": "ef67f87b-b1e7-4efc-b8af-cc6c80b49c68",
+                  "parentUUID": "ebf0e88a-789e-421d-874c-6dfb61a2b026",
                   "isHook": false,
                   "skipped": false
                 },
@@ -111,8 +111,8 @@
                   "context": null,
                   "code": "const response = await request(app)\n.post('/login')\n.set('Content-Type', 'application/json')\n.send({\n    'usuario': 'Random',\n    'senha': '654321'\n})\nexpect(response.status).to.equal(401)\nexpect(response.body.message).to.equal('Credenciais inválidas')",
                   "err": {},
-                  "uuid": "8c191f5b-4d30-43b1-9d4d-9b0f2bfb0fe7",
-                  "parentUUID": "33cc67ec-a8c4-45a0-9324-c486ee705f43",
+                  "uuid": "896e055e-d87f-48a0-9ae6-af082facd2bf",
+                  "parentUUID": "ebf0e88a-789e-421d-874c-6dfb61a2b026",
                   "isHook": false,
                   "skipped": false
                 },
@@ -120,7 +120,7 @@
                   "title": "Deve retornar 401 e a mensagem \"Senha bloqueada após exceder o limite de 3 tentativas.\" quando eu inserir um usuário válido com uma senha incorreta 3 vezes",
                   "fullTitle": "Login POST /login Deve retornar 401 e a mensagem \"Senha bloqueada após exceder o limite de 3 tentativas.\" quando eu inserir um usuário válido com uma senha incorreta 3 vezes",
                   "timedOut": false,
-                  "duration": 8,
+                  "duration": 9,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -129,22 +129,22 @@
                   "context": null,
                   "code": "// 1ª tentativa\nawait request(app)\n    .post('/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'usuario': 'Matheus',\n        'senha': 'senhaerrada1'\n    });\n// 2ª tentativa\nawait request(app)\n    .post('/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'usuario': 'Matheus',\n        'senha': 'senhaerrada2'\n    });\n// 3ª tentativa\nconst response = await request(app)\n    .post('/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'usuario': 'Matheus',\n        'senha': 'senhaerrada3'\n    });\nexpect(response.status).to.equal(401);\nexpect(response.body.message).to.equal('Senha bloqueada após exceder o limite de 3 tentativas.');",
                   "err": {},
-                  "uuid": "bc5da62a-a47a-4c2c-84db-55525718bd5e",
-                  "parentUUID": "33cc67ec-a8c4-45a0-9324-c486ee705f43",
+                  "uuid": "a4e30b3f-3d25-4c32-9d2c-50c643d3d61c",
+                  "parentUUID": "ebf0e88a-789e-421d-874c-6dfb61a2b026",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "ca488974-e691-4ed1-bb50-45fca578d5f5",
-                "8c191f5b-4d30-43b1-9d4d-9b0f2bfb0fe7",
-                "bc5da62a-a47a-4c2c-84db-55525718bd5e"
+                "ef67f87b-b1e7-4efc-b8af-cc6c80b49c68",
+                "896e055e-d87f-48a0-9ae6-af082facd2bf",
+                "a4e30b3f-3d25-4c32-9d2c-50c643d3d61c"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 36,
+              "duration": 38,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
@@ -160,7 +160,7 @@
           "_timeout": 2000
         },
         {
-          "uuid": "f6ad9333-1a9f-4b98-8cd4-154d7c108617",
+          "uuid": "4b9735ad-0723-481b-a6d4-e64954f24eaa",
           "title": "POST /resetar-senha",
           "fullFile": "/home/runner/work/api-login-desafio3/api-login-desafio3/test/resetarSenha.test.js",
           "file": "/test/resetarSenha.test.js",
@@ -171,7 +171,7 @@
               "title": "Deve retornar 200 e a mensagem \"Senha resetada com sucesso\"",
               "fullTitle": "POST /resetar-senha Deve retornar 200 e a mensagem \"Senha resetada com sucesso\"",
               "timedOut": false,
-              "duration": 3,
+              "duration": 2,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -180,8 +180,8 @@
               "context": null,
               "code": "const res = await request(app)\n  .post('/resetar-senha')\n  .send({ usuario: 'Matheus', novaSenha: 'novaSenha123' });\nexpect(res.status).to.equal(200);\nexpect(res.body.message).to.match(/resetada/);\nconst user = usuarios.find(u => u.usuario === 'Matheus');\nexpect(user.senha).to.equal('novaSenha123');\nexpect(user.tentativas).to.equal(0);\nexpect(user.bloqueado).to.be.false;",
               "err": {},
-              "uuid": "4051ef3e-44b6-46e9-9068-0f8ba97e974c",
-              "parentUUID": "f6ad9333-1a9f-4b98-8cd4-154d7c108617",
+              "uuid": "3c270254-5e24-46ef-af46-1359b3ef1694",
+              "parentUUID": "4b9735ad-0723-481b-a6d4-e64954f24eaa",
               "isHook": false,
               "skipped": false
             },
@@ -198,21 +198,21 @@
               "context": null,
               "code": "const res = await request(app)\n  .post('/resetar-senha')\n  .send({ usuario: 'Yuri', novaSenha: 'qualquer' });\nexpect(res.status).to.equal(401);\nexpect(res.body.message).to.match(/credenciais/i);",
               "err": {},
-              "uuid": "8229c008-4d51-4f47-a07b-b3d1e774706d",
-              "parentUUID": "f6ad9333-1a9f-4b98-8cd4-154d7c108617",
+              "uuid": "80a88df9-4d0a-4cf8-baa2-ae03708d8441",
+              "parentUUID": "4b9735ad-0723-481b-a6d4-e64954f24eaa",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "4051ef3e-44b6-46e9-9068-0f8ba97e974c",
-            "8229c008-4d51-4f47-a07b-b3d1e774706d"
+            "3c270254-5e24-46ef-af46-1359b3ef1694",
+            "80a88df9-4d0a-4cf8-baa2-ae03708d8441"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5,
+          "duration": 4,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
