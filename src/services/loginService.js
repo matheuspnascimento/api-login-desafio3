@@ -1,4 +1,4 @@
-const { usuarios } = require('../models/usuarioModel');
+const usuarios = require('../models/usuarioModel');
 
 function autenticarUsuario(usuario, senha) {
   const user = usuarios.find(u => u.usuario === usuario);
