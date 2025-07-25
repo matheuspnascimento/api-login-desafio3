@@ -1,12 +1,13 @@
 const app = require('../rest/app');
 const request = require('supertest');
 const { expect } = require('chai');
-const { resetUsuarios } = require('../src/models/usuarioModel');
+const { resetUsuarios, usuarios } = require('../src/models/usuarioModel');
+
+beforeEach(() => {
+  resetUsuarios();
+});
 
 describe('Login', () => {
-    beforeEach(() => {
-        resetUsuarios();
-    });
     describe('POST /login', () => {
         it('Deve retornar 200 com um token em string e a mensagem "Login realizado com sucesso" quando eu fizer login com um usuário válido', async () => {
             const response = await request(app)
@@ -61,3 +62,25 @@ describe('Login', () => {
         })    
     })
 })
+
+describe('POST /resetar-senha', () => {
+  it('Deve retornar 200 e a mensagem "Senha resetada com sucesso"', async function () {
+    const res = await request(app)
+      .post('/resetar-senha')
+      .send({ usuario: 'Matheus', novaSenha: 'novaSenha123' });
+    expect(res.status).to.equal(200);
+    expect(res.body.message).to.match(/resetada/);
+    const user = usuarios.find(u => u.usuario === 'Matheus');
+    expect(user.senha).to.equal('novaSenha123');
+    expect(user.tentativas).to.equal(0);
+    expect(user.bloqueado).to.be.false;
+  });
+
+  it('Deve retornar 401 e a mensagem "Credenciais inválidas" quando eu tentar resetar a senha de um usuário inexistente', async function () {
+    const res = await request(app)
+      .post('/resetar-senha')
+      .send({ usuario: 'Yuri', novaSenha: 'qualquer' });
+    expect(res.status).to.equal(401);
+    expect(res.body.message).to.match(/credenciais/i);
+  });
+});
