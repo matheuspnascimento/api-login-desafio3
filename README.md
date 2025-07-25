@@ -180,11 +180,11 @@ Resposta esperada:
 }
 ```
 
-#### Exemplo de usuário inexistente
+#### Exemplo de senha inexistente
 Body:
 ```json
 {
-  "usuario": "NaoExiste",
+  "usuario": "Matheus",
   "senha": "qualquer"
 }
 ```
