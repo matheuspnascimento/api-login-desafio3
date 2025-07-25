@@ -31,4 +31,7 @@ app.use('/', loginRoutes);
 // Middleware de erro genérico
 app.use(errorHandler);
 
-module.exports = app; 
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`API rodando na porta ${PORT}`);
+}); 
