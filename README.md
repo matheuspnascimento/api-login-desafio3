@@ -1,4 +1,4 @@
-# API de Login com Testes Automatizados
+# API e Aplicação Web de Login com Testes Automatizados
 
 [![JavaScript](https://img.shields.io/badge/language-JavaScript-yellow?logo=javascript)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 [![Express](https://img.shields.io/badge/express-%23404d59.svg?logo=express&logoColor=white)](https://expressjs.com/pt-br/)
@@ -19,10 +19,11 @@ Projeto educativo desenvolvido como parte do desafio proposto por Julio de Lima 
 
 - **Node.js**
 - **Express**
-- **Mocha** (testes)
+- **Mocha** (testes da API)
 - **Chai** (assertions)
 - **Supertest** (testes de API)
-- **Mochawesome** (relatórios de teste)
+- **Cypress** (testes E2E da aplicação web)
+- **Mochawesome** e **cypress-mochawesome-reporter** (relatórios de testes)
 - **Swagger** (documentação interativa)
 
 ---
@@ -59,7 +60,7 @@ api-login-desafio3/
 
 ---
 
-## Como Executar o Projeto
+## Como Executar o Projeto (API + Frontend)
 
 1. **Clone o repositório:**
    ```bash
@@ -70,22 +71,37 @@ api-login-desafio3/
    ```bash
    npm install
    ```
-3. **Inicie a API:**
+3. **Inicie a API e o Frontend:**
    ```bash
-   node rest/server.js
+   npm run dev
    ```
-   A API estará disponível em: [http://localhost:3000](http://localhost:3000)
+   - App Web: [http://localhost:3000](http://localhost:3000)
+   - Swagger: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
 4. **Acesse a documentação Swagger:**
    - [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
-5. **Execute os testes automatizados:**
+5. **Execute os testes automatizados (API):**
    ```bash
    npm test
    ```
-   O relatório será gerado automaticamente em `mochawesome-report/mochawesome.html`.
+   Relatório da API: `mochawesome-report/mochawesome.html`
+
+6. **Execute os testes E2E (Cypress) com relatório Mochawesome:**
+   ```bash
+   npx cypress run --browser electron --headless
+   ```
+   Relatório E2E: `mochawesome-report/index.html`
 
 ---
+
+## Frontend Web
+
+- Local: diretório `public/` (HTML, CSS, JS)
+- Framework: MaterializeCSS
+- IDs para automação (Cypress):
+  - Login: `loginForm`, `usuario`, `senha`, `loginSubmitBtn`, `loginResult`
+  - Reset: `resetForm`, `usuarioReset`, `novaSenha`, `resetSubmitBtn`, `resetResult`
 
 ## Usuários Cadastrados (Mockados em Memória)
 
@@ -261,6 +277,7 @@ Resposta esperada:
 - [Chai](https://www.chaijs.com/)
 - [Supertest](https://www.npmjs.com/package/supertest)
 - [Mochawesome](https://www.npmjs.com/package/mochawesome)
+- [cypress-mochawesome-reporter](https://www.npmjs.com/package/cypress-mochawesome-reporter)
 - [Swagger UI Express](https://www.npmjs.com/package/swagger-ui-express)
 
 ---
