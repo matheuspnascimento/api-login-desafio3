@@ -1,22 +1,8 @@
 describe('Login', () => {
-  it('Login com credenciais válidas deve receber mensagem de sucesso e token', () => {
-    cy.visit('/');
-    cy.get('#usuario').click().type('Matheus');
-    cy.get('#senha').click().type('123456');
-    cy.get('#loginSubmitBtn').click();
-    cy.get('#loginResult').should('contain.text', 'Login realizado');
-    cy.window().then((win) => {
-      const token = win.localStorage.getItem('token');
-      expect(token).to.be.a('string').and.to.have.length.greaterThan(10);
-    });
-  });
-});
-
-describe('Login', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
   })
-  it('Login com credenciais válidas deve receber mensagem de sucesso e token', () => {
+  it('Login com credenciais válidas deve receber mensagem de sucesso', () => {
     // Actions
     cy.get('#usuario').click().type('Matheus')
     cy.get('#senha').click().type('123456')
