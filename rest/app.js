@@ -1,10 +1,14 @@
 const express = require('express');
+const path = require('path');
 const { swaggerUi, swaggerDocument } = require('./config/swagger');
 const loginRoutes = require('./routes/loginRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 app.use(express.json());
+
+// Static frontend
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Swagger config
 const swaggerDefinition = {

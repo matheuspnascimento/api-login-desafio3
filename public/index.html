@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplicação Web Login - Desafio 04</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="grey lighten-4">
+    <nav class="teal">
+      <div class="nav-wrapper container">
+        <a href="#" id="brandTitle" class="brand-logo">Aplicação Web Login - Desafio 04</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="section">
+        <div class="row">
+          <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <ul id="tabsMain" class="tabs z-depth-1">
+              <li class="tab col s6"><a id="tabLoginLink" class="active" href="#login-tab">Login</a></li>
+              <li class="tab col s6"><a id="tabResetLink" href="#reset-tab">Resetar Senha</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="login-tab" class="row">
+          <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Entrar</span>
+                <div class="row">
+                  <form id="loginForm" class="col s12">
+                    <div class="input-field">
+                      <i class="material-icons prefix">person</i>
+                      <input id="usuario" name="usuario" type="text" required />
+                      <label for="usuario">Usuário</label>
+                    </div>
+                    <div class="input-field">
+                      <i class="material-icons prefix">lock</i>
+                      <input id="senha" name="senha" type="password" required />
+                      <label for="senha">Senha</label>
+                    </div>
+                    <button id="loginSubmitBtn" class="btn waves-effect waves-light teal" type="submit">
+                      Login
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </form>
+                </div>
+                <div id="loginResult" class="result-area"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="reset-tab" class="row">
+          <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Resetar Senha</span>
+                <div class="row">
+                  <form id="resetForm" class="col s12">
+                    <div class="input-field">
+                      <i class="material-icons prefix">person</i>
+                      <input id="usuarioReset" name="usuario" type="text" required />
+                      <label for="usuarioReset">Usuário</label>
+                    </div>
+                    <div class="input-field">
+                      <i class="material-icons prefix">vpn_key</i>
+                      <input id="novaSenha" name="novaSenha" type="password" required />
+                      <label for="novaSenha">Nova Senha</label>
+                    </div>
+                    <button id="resetSubmitBtn" class="btn waves-effect waves-light teal" type="submit">
+                      Resetar
+                      <i class="material-icons right">refresh</i>
+                    </button>
+                  </form>
+                </div>
+                <div id="resetResult" class="result-area"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <p class="grey-text text-lighten-4">Projeto educativo com o objetivo de aprimorar práticas de automação de testes</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/app.js"></script>
+  </body>
+  </html>
+

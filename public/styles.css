@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0; /* remove a faixa branca ao redor, inclusive no final da página */
+  display: flex;
+  min-height: 100vh; /* garante que o footer alcance o final da viewport */
+  flex-direction: column;
+}
+
+main.container {
+  margin-top: 32px;
+  margin-bottom: 0; /* remove faixa clara acima do footer */
+  flex: 1 0 auto; /* empurra o footer para o final da página quando o conteúdo é curto */
+}
+
+.result-area {
+  margin-top: 12px;
+}
+
+footer.page-footer {
+  margin-top: 0;
+  margin-bottom: 0; /* garante que não haja espaço branco abaixo do footer */
+  width: 100%;
+}
+
+/* Evita que o label do Materialize fique "por cima" do input e bloqueie o clique em testes E2E */
+.input-field > label {
+  pointer-events: none;
+}
+

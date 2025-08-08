@@ -23,8 +23,27 @@ jobs:
       - name: Run tests
         run: npm test 
 
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run dev
+          wait-on: 'http://localhost:3000'
+          browser: electron
+          # you can pass config overrides if needed
+          config: baseUrl=http://localhost:3000
+          # ensure reporter output folder is clean
+          build: rm -rf mochawesome-report || true
+
+      - name: Upload Cypress screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+
       - name: Ensure report exists
-        run: test -f mochawesome-report/mochawesome.html
+        run: test -f mochawesome-report/mochawesome.html || test -f mochawesome-report/index.html
 
       - name: Prepare docs folder
         run: |

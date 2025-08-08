@@ -1,2 +1,6 @@
 node_modules/
 mochawesome-report
+docs/
+# Cypress artifacts
+cypress/videos/
+cypress/screenshots/

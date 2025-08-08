@@ -2,9 +2,10 @@
   "name": "api-desafio-3",
   "version": "1.0.0",
   "description": "API de login para desafio de teste de software.",
-  "main": "app.js",
+  "main": "rest/server.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node rest/server.js",
+    "dev": "node rest/server.js",
     "test": "mocha --recursive test/*.test.js --reporter mochawesome"
   },
   "dependencies": {
@@ -16,6 +17,8 @@
   },
   "devDependencies": {
     "chai": "^5.2.1",
+    "cypress": "^14.5.2",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "mocha": "^11.7.1",
     "supertest": "^7.1.4"
   }
